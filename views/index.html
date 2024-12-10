@@ -14,13 +14,13 @@
     <div class="container">
       <h2>Example Usage:</h2>
       <ul>
-        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
-        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
+        <li><a id="a1" href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
+        <li><a id="a2" href="api/1451001600000">[project url]/api/1451001600000</a></li>
       </ul>
 
       <h2>Example Output:</h2>
       <p>
-        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
+        <code id="d">{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
       </p>
     </div>
     <div class="footer">
@@ -28,5 +28,18 @@
         By <a href="https://www.freecodecamp.org/">freeCodeCamp.org</a>
       </p>
     </div>
+    <script>
+      const a1 = document.querySelector('#a1')
+      const a2 = document.querySelector('#a2')
+      const json = document.querySelector('#d')
+      const d = new Date
+      const utc = d.getTime()
+      const aString1 = `${d.getFullYear() }-${d.getMonth() + 1}-${d.getDate()}`
+      a1.href='api/'+ aString1
+      a1.textContent = a1.href
+      a2.href = 'api/' + utc
+      a2.textContent = a2.href
+      json.textContent = `{'unix': ${utc}, 'utc':'${d.toUTCString()}'}`
+    </script>
   </body>
 </html>
